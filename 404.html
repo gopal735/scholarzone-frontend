@@ -28,11 +28,10 @@
   <script type="text/javascript">
     (function () {
       var path = window.location.pathname;
-      var base = path.split('/').slice(0, -1).join('/') || '/';
-      if (base === '') base = '/';
-      if (!path.match(/\.\w+$/)) {
-        window.location.replace(base + '/');
-      }
+      if (path.match(/\.\w+$/)) return;
+      var repoRoot = path.split('/').slice(0, 2).join('/') || '/';
+      if (repoRoot === '') repoRoot = '/';
+      window.location.replace(repoRoot + '/');
     })();
   </script>
 </head>
